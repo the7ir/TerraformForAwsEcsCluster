@@ -1,6 +1,3 @@
-provider "aws" {
-  region = var.aws_region
-}
 resource "aws_kms_key" "state_backend_bucket_kms_key" {
   description             = "Encrypt the state bucket objects"
   deletion_window_in_days = 10
@@ -31,7 +28,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "state_backend_buc
   rule {
     apply_server_side_encryption_by_default {
       kms_master_key_id = aws_kms_key.state_backend_bucket_kms_key.arn
-      sse_algorithm     = "aws:kms"
+      sse_algorithm = "aws:kms"
     }
     bucket_key_enabled = true
   }
