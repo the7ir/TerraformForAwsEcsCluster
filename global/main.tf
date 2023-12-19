@@ -52,7 +52,7 @@ resource "aws_dynamodb_table" "state_dynamo_table" {
   hash_key     = "LockID"
 
   attribute {
-    name = "LockID"
+    name = "LockID"  
     type = "S"
   }
 }
