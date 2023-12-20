@@ -12,6 +12,7 @@ variable "project_name" {
 variable "source_repo_name" {
   description = "Source repo name of the CodeCommit repository"
   type        = string
+  default = data.aws_codecommit_repository.test.id
 }
 
 variable "source_repo_branch" {

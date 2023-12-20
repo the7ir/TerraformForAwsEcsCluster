@@ -3,7 +3,7 @@ module "alb" {
 
   name    = "my-alb"
   vpc_id  = data.aws_vpc.my-dev-vpc.id
-  subnets = [data.aws_vpc.my-dev-vpc.public_subnets, data.aws_vpc.my-dev-vpc.private_subnets]
+  subnets = data.aws_subnets.subnets.ids //[data.aws_subnets.private_subnets.ids, data.aws_vpc.my-dev-vpc.private_subnets]
 
   # Security Group
   security_group_ingress_rules = {
@@ -30,7 +30,7 @@ module "alb" {
   }
 
   access_logs = {
-    bucket = "my-alb-logs"
+    bucket = "my-alb-logs" // Co the create truoc do neu khi terraform apply bi loi -> thay doi
   }
 
   listeners = {
@@ -46,7 +46,7 @@ module "alb" {
     ex-https = {
       port            = 443
       protocol        = "HTTPS"
-      certificate_arn = "arn:aws:iam::123456789012:server-certificate/test_cert-123456789012" // need to changes
+      certificate_arn = "arn:aws:iam::123456789012:server-certificate/test_cert-123456789012" // need to changes -> có lẽ là cert cho cái https
 
       forward = {
         target_group_key = "ex-instance"

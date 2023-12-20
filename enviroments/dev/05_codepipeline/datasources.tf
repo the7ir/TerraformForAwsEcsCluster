@@ -1,3 +1,3 @@
-data "aws_codecommit_repository" "test" {
-  repository_name = "MyTestRepository" // need to change
+data "aws_codecommit_repository" "source_repository" {
+  repository_name = "my-repo-name" // match với repository_name bên code_commit
 }

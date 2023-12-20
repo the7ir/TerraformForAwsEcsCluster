@@ -93,13 +93,13 @@ module "ecs" {
 
       load_balancer = {
         service = {
-          target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:1234567890:targetgroup/bluegreentarget1/209a844cd01825a4" // Need to change
+          target_group_arn = data.aws_lb_target_group.test.arn //"arn:aws:elasticloadbalancing:eu-west-1:1234567890:targetgroup/bluegreentarget1/209a844cd01825a4" // Need to change
           container_name   = "ecs-sample" // Need to change
           container_port   = 80
         }
       }
 
-      subnet_ids = ["10.0.1.0/24", "10.0.101.0/24"] // need to change
+      subnet_ids = data.aws_subnets.subnets.ids  //["10.0.1.0/24", "10.0.101.0/24"] // need to change
       security_group_rules = {
         alb_ingress_3000 = {
           type                     = "ingress"

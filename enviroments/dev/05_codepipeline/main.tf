@@ -33,8 +33,8 @@ resource "aws_codepipeline" "terraform_pipeline" {
       run_order        = 1
 
       configuration = {
-        RepositoryName       = var.source_repo_name
-        BranchName           = var.source_repo_branch
+        RepositoryName       = var.source_repo_name // May be change or attribute Reference
+        BranchName           = var.source_repo_branch // May be change or attribute Reference
         PollForSourceChanges = "true"
       }
     }

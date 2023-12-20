@@ -14,5 +14,5 @@ module "metric_alarm" {
   metric_name = "ErrorCount"
   statistic   = "Maximum"
 
-  alarm_actions = ["arn:aws:sns:eu-west-1:835367859852:my-sns-queue"]
+  alarm_actions = ["arn:aws:sns:eu-west-1:835367859852:my-sns-queue"] // need to change
 }

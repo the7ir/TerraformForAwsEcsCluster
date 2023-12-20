@@ -13,6 +13,7 @@ variable "create_new_repo" {
 variable "source_repository_name" {
   type        = string
   description = "Name of the Source CodeCommit repository used by the pipeline"
+  default = "my-repo-name"
 }
 
 variable "source_repository_branch" {
